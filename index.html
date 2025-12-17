@@ -73,10 +73,12 @@
         const seconds = Math.floor((diff / 1000) % 60);
         const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
 
-        document.getElementById('time').textContent = 
-            `${years} years, ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+        const daysInYear = days % 365; 
 
-        document.getElementById('num-days').textContent = days;
+        document.getElementById('time').textContent = 
+            `${years} years, ${daysInYear} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+
+        document.getElementById('num-days').textContent = daysInYear;
         document.getElementById('num-hours').textContent = hours;
         document.getElementById('num-minutes').textContent = minutes;
         document.getElementById('num-seconds').textContent = seconds;

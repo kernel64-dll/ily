@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>aubree x charlie <3</h1>
+    <h2>i love you so much charlie :3</h2>
+    <p>we've been together for</p>
+    <h3 id="time"></h3>
+
+    <div class="photo-gallery">
+        <div class="frame">
+            <img src="pfp-aubree.jpg">
+        </div>
+        <div class="frame">
+            <img src="avnar.webp">
+        </div>
+    </div>
+
+    <div class="hearts">
+         <div class="heart-container">
+            <div class="heart-wrapper">
+                <img src="heart.svg" class="heart" id="heart-years">
+                <div class="number" id="num-years">0</div>
+            </div>
+            <div class="label">years</div>
+        </div>
+        <div class="heart-container">
+            <div class="heart-wrapper">
+                <img src="heart.svg" class="heart" id="heart-days">
+                <div class="number" id="num-days">0</div>
+            </div>
+            <div class="label">days</div>
+        </div>
+        <div class="heart-container">
+            <div class="heart-wrapper">
+                <img src="heart.svg" class="heart" id="heart-hours">
+                <div class="number" id="num-hours">0</div>
+            </div>
+            <div class="label">hours</div>
+        </div>
+        <div class="heart-container">
+            <div class="heart-wrapper">
+                <img src="heart.svg" class="heart" id="heart-minutes">
+                <div class="number" id="num-minutes">0</div>
+            </div>
+            <div class="label">minutes</div>
+        </div>
+        <div class="heart-container">
+            <div class="heart-wrapper">
+                <img src="heart.svg" class="heart" id="heart-seconds">
+                <div class="number" id="num-seconds">0</div>
+            </div>
+            <div class="label">seconds</div>
+        </div>
+       
+    </div>
+
+    <script>
+    const startDate = new Date('2024-03-26T11:57:00'); 
+
+    function updateTimeTogether() {
+        const now = new Date();
+        const diff = now.getTime() - startDate.getTime();
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+        const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+
+        document.getElementById('time').textContent = 
+            `${years} years, ${days} days, ${hours} hours, ${minutes} minutes, and ${seconds} seconds`;
+
+        document.getElementById('num-days').textContent = days;
+        document.getElementById('num-hours').textContent = hours;
+        document.getElementById('num-minutes').textContent = minutes;
+        document.getElementById('num-seconds').textContent = seconds;
+        document.getElementById('num-years').textContent = years;
+    }
+
+    function heartbeat(id) {
+        const heart = document.getElementById(id);
+        heart.classList.add('beat');
+        setTimeout(() => heart.classList.remove('beat'), 300);
+    }
+
+    updateTimeTogether();
+    setInterval(updateTimeTogether, 1000);
+    setInterval(() => heartbeat('heart-seconds'), 1000);
+    setInterval(() => heartbeat('heart-minutes'), 60000);
+    setInterval(() => heartbeat('heart-hours'), 3600000);
+    setInterval(() => heartbeat('heart-days'), 86400000);
+    setInterval(() => heartbeat('heart-years'), 31536000000);
+    </script>
+
+    <script>
+    for (let i = 0; i < 50; i++) {
+        const snow = document.createElement('div');
+        snow.classList.add('snowflake');
+        snow.style.left = Math.random() * 100 + 'vw';
+        snow.style.animationDuration = 3 + Math.random() * 5 + 's';
+        snow.style.animationDelay = Math.random() * 5 + 's';
+        document.body.appendChild(snow);
+    }
+    </script>
+
+</body>
+</html>
